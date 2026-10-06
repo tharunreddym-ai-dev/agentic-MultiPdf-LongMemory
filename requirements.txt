@@ -1,0 +1,29 @@
+# --- Backend ---
+fastapi
+uvicorn[standard]
+python-dotenv
+python-multipart
+
+# --- Agent stack ---
+langchain==1.2.13
+langchain-core==1.2.23
+langchain-classic
+langchain-google-genai
+langchain-groq==1.1.2
+langchain-community
+langchain-text-splitters
+groq                        # imported (unused) in agent/build_agent.py — left in so the module still imports cleanly
+
+# --- Vector store, embeddings, PDF parsing ---
+qdrant-client
+requests
+pypdf                        # required by langchain_community's PyPDFLoader
+
+# --- Frontend ---
+streamlit>=1.32
+
+# Versions above are pinned only where they've been confirmed working
+# (LangChain/langchain-core/langchain-groq, per prior testing in this project).
+# Everything else is left unpinned so pip resolves current compatible
+# releases. For a fully reproducible install later, run:
+#   pip freeze > requirements-lock.txt
